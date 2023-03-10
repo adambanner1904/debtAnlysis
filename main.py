@@ -1,19 +1,26 @@
 from simple_debt import Debt
 import matplotlib.pyplot as plt
+amount = 50
+
+debt = Debt(amount, 50, 0.09, 0.06, threshold=27.995)
+debt_without_threshold = Debt(amount, 50, 0.2, 0.06)
 
 
-debt = Debt(50, 50, 0.09, 0.06, threshold=27.995)
-
-print(f'Starting debt is: {debt.amount}')
-print(f'Starting salary is: {debt.salary}')
-print(f'Payments are {debt.payment * 1000}')
-# print(f'Salary is {debt.salary}, Income is {debt.income}')
 while debt.check_amount():
     debt.pass_year()
     if debt.years == 31:
         break
-#     print(f'Year {debt.years}: {debt.amount}')
-print(f'It took {debt.years} years and {debt.months} months')
-print(f'Total interest: {debt.total_interest}')
-print(f'Total paid: {debt.total_payment}')
-# print(debt.payment_history)
+
+while debt_without_threshold.check_amount():
+    debt_without_threshold.pass_year()
+    if debt_without_threshold.years == 31:
+        break
+
+
+debt.plot_payment_history("red")
+debt_without_threshold.plot_payment_history("green")
+plt.hlines(amount, 0, len(debt.payment_history))
+plt.ylabel('Pounds (Thousands)')
+plt.xlabel('Time (Months)')
+plt.legend(['Payment History with threshold payments', 'Payment History without threshold payments', 'Amount of original debt'])
+plt.show()

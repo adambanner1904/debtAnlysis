@@ -1,4 +1,7 @@
 # Creating a debt class
+import matplotlib.pyplot as plt
+
+
 class Debt:
 
     def __init__(self, amount, salary, payback_rate, interest_rate, threshold=0):
@@ -71,20 +74,9 @@ class Debt:
         pass
         # Make payment
 
+    def plot_payment_history(self, color='blue'):
+        plt.plot(range(len(self.payment_history)), self.payment_history, c=color)
 
-debt = Debt(50, 50, 0.09, 0.06, threshold=27.995)
 
-print(f'Starting debt is: {debt.amount}')
-print(f'Starting salary is: {debt.salary}')
-print(f'Payments are {debt.payment * 1000}')
-# print(f'Salary is {debt.salary}, Income is {debt.income}')
-while debt.check_amount():
-    debt.pass_year()
-    if debt.years == 31:
-        break
-    print(f'Year {debt.years}: {debt.amount}')
-print(f'It took {debt.years} years and {debt.months} months')
-print(f'Total interest: {debt.total_interest}')
-print(f'Total paid: {debt.total_payment}')
-print(debt.payment_history)
+
 
