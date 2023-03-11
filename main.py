@@ -19,6 +19,7 @@ while debt_without_threshold.check_amount():
 
 debt.plot_payment_history("red")
 debt_without_threshold.plot_payment_history("green")
+debt_without_threshold.plot_debt_history("blue")
 plt.hlines(amount, 0, len(debt.payment_history))
 plt.ylabel('Pounds (Thousands)')
 plt.xlabel('Time (Months)')

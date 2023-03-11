@@ -20,12 +20,16 @@ class Debt:
         else:
             self.payment = self.salary * self.pbr/12
 
+        # Used to track total payment and history
         self.total_payment = 0
         self.payment_history = []
 
         # Used to track the interest
         self.total_interest = 0
         self.interest_history = []
+
+        # Used to track debt history
+        self.debt_history = [self.amount]
 
         # Used to keep track of how long it takes to pay a debt
         self.years = 0
@@ -36,14 +40,20 @@ class Debt:
 
         self.amount += self.amount * self.ir
         self.total_interest += self.amount * self.ir
+
+        # Tracking features
         self.interest_history.append(self.total_interest)
+        self.debt_history.append(self.amount)
 
     def make_payment(self):
         """Making a monthly payment."""
         # If the amount is positive, if there is still a debt, then continue to making a payment
         self.amount -= self.payment
         self.total_payment += self.payment
+
+        # Tracking features
         self.payment_history.append(self.total_payment)
+        self.debt_history.append(self.amount)
 
     def check_amount(self):
         """Checks to see if the amount of the debt is positive and if the next payment
@@ -76,6 +86,9 @@ class Debt:
 
     def plot_payment_history(self, color='blue'):
         plt.plot(range(len(self.payment_history)), self.payment_history, c=color)
+
+    def plot_debt_history(self, color='red'):
+        plt.plot(range(len(self.debt_history)), self.debt_history, c=color)
 
 
 
