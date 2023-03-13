@@ -2,27 +2,27 @@ from simple_debt import Debt
 import matplotlib.pyplot as plt
 amount = 50
 
-debt = Debt(amount, 50, 0.09, 0.06, threshold=27.995)
-debt_without_threshold = Debt(amount, 50, 0.2, 0.06)
+debt = Debt(amount, 60, 0.09, 0.06, threshold=27.995)
+debt2 = Debt(amount, 60, 0.3, 0.06)
 
 
-while debt.check_amount():
-    debt.pass_year()
-    if debt.years == 31:
-        break
+debt.wipe_debt()
 
-while debt_without_threshold.check_amount():
-    debt_without_threshold.pass_year()
-    if debt_without_threshold.years == 31:
-        break
+debt2.wipe_debt()
 
 
-debt.plot_payment_history("red")
-debt_without_threshold.plot_payment_history("green")
-debt_without_threshold.plot_debt_history("blue")
-plt.hlines(amount, 0, len(debt.payment_history))
-plt.hlines(debt.total_payment, 0, len(debt.payment_history), linestyles='--', label='Total amount paid')
-plt.ylabel('Pounds (Thousands)')
-plt.xlabel('Time (Months)')
-plt.legend(['Payment History with threshold payments', 'Payment History without threshold payments', 'Amount of original debt'])
-plt.show()
+print(f'Years: {debt.years}, Months: {debt.months}')
+print(f'Years: {debt2.years}, Months: {debt2.months}')
+print(f'Amount saved: {debt.total_payment-debt2.total_payment}')
+print(f'Payments for plan 1: {debt.payment}, Payment for plan 2: {debt2.payment}')
+
+
+# debt.plot_payment_history("red")
+# debt_without_threshold.plot_payment_history("green")
+# debt_without_threshold.plot_debt_history("blue")
+# plt.hlines(amount, 0, len(debt.payment_history))
+# plt.hlines(debt.total_payment, 0, len(debt.payment_history), linestyles='--', label='Total amount paid')
+# plt.ylabel('Pounds (Thousands)')
+# plt.xlabel('Time (Months)')
+# plt.legend(['Payment History with threshold payments', 'Payment History without threshold payments', 'Amount of original debt'])
+# plt.show()

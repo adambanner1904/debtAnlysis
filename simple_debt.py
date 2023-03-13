@@ -84,6 +84,12 @@ class Debt:
         pass
         # Make payment
 
+    def wipe_debt(self):
+        while self.check_amount():
+            self.pass_year()
+            if self.years == 30:
+                break
+
     def plot_payment_history(self, color='blue'):
         plt.plot(range(len(self.payment_history)), self.payment_history, c=color)
 
