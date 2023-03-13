@@ -1,4 +1,5 @@
 from simple_debt import Debt
+from money import amount_saved
 import matplotlib.pyplot as plt
 amount = 50
 
@@ -11,9 +12,9 @@ debt.wipe_debt()
 debt2.wipe_debt()
 
 
-print(f'Years: {debt.years}, Months: {debt.months}')
-print(f'Years: {debt2.years}, Months: {debt2.months}')
-print(f'Amount saved: {debt.total_payment-debt2.total_payment}')
+debt.print_time_taken()
+debt2.print_time_taken()
+print(f'Amount saved: {amount_saved(debt, debt2)}')
 print(f'Payments for plan 1: {debt.payment}, Payment for plan 2: {debt2.payment}')
 
 

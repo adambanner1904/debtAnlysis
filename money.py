@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def tax(salary):
     if salary <= 12.570:
         income = salary
@@ -19,4 +22,10 @@ def tax(salary):
 
     return income
 
-print(tax(25))
+
+# Takes in two debts and subtracts one total payment from another to work out
+# the difference which is the amount saved
+def amount_saved(debt1, debt2):
+    amount_saved = np.abs(debt1.total_payment - debt2.total_payment)
+    return amount_saved
+

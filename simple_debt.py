@@ -90,11 +90,19 @@ class Debt:
             if self.years == 30:
                 break
 
+    # Plotting functions
     def plot_payment_history(self, color='blue'):
         plt.plot(range(len(self.payment_history)), self.payment_history, c=color)
 
     def plot_debt_history(self, color='red'):
         plt.plot(range(len(self.debt_history)), self.debt_history, c=color)
+
+    # Printing functions
+    def print_time_taken(self):
+        print(f'Years: {self.years}, Months: {self.months}')
+
+
+
 
 
 
