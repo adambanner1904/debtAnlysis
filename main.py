@@ -1,23 +1,37 @@
+import matplotlib.pyplot as plt
+import pandas as pd
 from simple_debt import Debt
 from money import amount_saved
-import matplotlib.pyplot as plt
+
 amount = 50
+data = pd.DataFrame(columns=['Total Paid'])
+for salary in range(25, 100):
+    debt = Debt(amount, salary, 0.09, 0.06, threshold=27.995)
+    debt.wipe_debt()
+    df = pd.DataFrame()
+    data.loc[salary] = debt.total_payment
 
-debt = Debt(amount, 40, 0.09, 0.06, threshold=27.995)
-debt2 = Debt(amount, 40, 0.3, 0.06)
+# debt.print_time_taken()
+# debt.print_payment('debt1')
+# debt.print_total_payment('debt1')
+data.plot(y='Total Paid')
 
 
-debt.wipe_debt()
-
-# debt2.wipe_debt()
 
 
-debt.print_time_taken()
+
+
+
+
+
+
+
+
+
+
 # debt2.print_time_taken()
 # print(f'Amount saved: {amount_saved(debt, debt2)}')
-debt.print_payment('debt1')
 # debt2.print_payment('debt2')
-debt.print_total_payment('debt1')
 # debt2.print_total_payment('debt2')
 
 
