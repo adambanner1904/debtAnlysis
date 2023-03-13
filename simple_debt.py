@@ -101,6 +101,9 @@ class Debt:
     def print_time_taken(self):
         print(f'Years: {self.years}, Months: {self.months}')
 
+    def print_payment(self, name):
+        print(f'Monthly payments for {name} is: £{self.payment * 1000}')
+
 
 
 

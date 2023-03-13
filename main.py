@@ -15,7 +15,8 @@ debt2.wipe_debt()
 debt.print_time_taken()
 debt2.print_time_taken()
 print(f'Amount saved: {amount_saved(debt, debt2)}')
-print(f'Payments for plan 1: {debt.payment}, Payment for plan 2: {debt2.payment}')
+debt.print_payment('debt1')
+debt2.print_payment('debt2')
 
 
 # debt.plot_payment_history("red")
