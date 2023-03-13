@@ -1,22 +1,36 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from simple_debt import Debt
-from money import amount_saved
+# from money import amount_saved
 
 amount = 50
-data = pd.DataFrame(columns=['Total Paid'])
-for salary in range(25, 100):
+data = pd.DataFrame(columns=['Salary', 'Total paid', 'Time taken'])
+for idx, salary in enumerate(range(25, 100)):
     debt = Debt(amount, salary, 0.09, 0.06, threshold=27.995)
     debt.wipe_debt()
-    df = pd.DataFrame()
-    data.loc[salary] = debt.total_payment
+    months = debt.years * 12 + debt.months
+    data.loc[idx] = [salary, debt.total_payment, months]
+
+# print(data)
+plt.plot(range(25, 100), data['Time taken'])
+plt.title("Salary vs Time Taken to Pay Back Loan")
+plt.xlabel("Salary (£1000's)")
+plt.ylabel("Time Taken (Months)")
+plt.show()
 
 # debt.print_time_taken()
 # debt.print_payment('debt1')
 # debt.print_total_payment('debt1')
-data.plot(y='Total Paid')
+# max_amount_paid = data['Total Paid'].max()
 
 
+
+# Plotting the total amount paid against salary when making minimum repayments
+# plt.plot(range(25, 100), data['Total Paid'])
+# plt.title("Salary vs Total Amount Paid From Minimum Repayments")
+# plt.xlabel("Salary (£1000's)")
+# plt.ylabel("Total Amount Paid (£1000's)")
+# plt.show()
 
 
 
