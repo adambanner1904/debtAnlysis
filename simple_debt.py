@@ -92,7 +92,7 @@ class Debt:
 
     # Plotting functions
     def plot_payment_history(self, color='blue'):
-        plt.plot(range(len(self.payment_history)), self.payment_history, c=color)
+        plt.plot(range(len(self.payment_history)), self.payment_history, c=color)F
 
     def plot_debt_history(self, color='red'):
         plt.plot(range(len(self.debt_history)), self.debt_history, c=color)
@@ -103,6 +103,9 @@ class Debt:
 
     def print_payment(self, name):
         print(f'Monthly payments for {name} is: £{self.payment * 1000}')
+
+    def print_total_payment(self, name):
+        print(f'Total paid on {name}: £{self.total_payment * 1000}')
 
 
 
