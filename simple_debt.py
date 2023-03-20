@@ -47,7 +47,7 @@ class Debt:
 
     def make_payment(self):
         """Making a monthly payment."""
-        # If the amount is positive, if there is still a debt, then continue to making a payment
+        # Simply taking a payment off of the amount
         self.amount -= self.payment
         self.total_payment += self.payment
 
@@ -66,6 +66,8 @@ class Debt:
 
     def pass_year(self):
         """The interest is added at the end of the year"""
+        # Accumulate interest once a year
+        self.accumulate_interest()
 
         # Make payment every month of the year
         for m in range(12):
@@ -77,8 +79,6 @@ class Debt:
                 return
         self.years += 1
         self.months = 0
-        # Accumulate interest once a year
-        self.accumulate_interest()
 
     def pass_month(self):
         pass

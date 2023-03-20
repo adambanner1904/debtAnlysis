@@ -1,4 +1,6 @@
 import numpy as np
+from simple_debt import Debt
+import pandas as pd
 
 
 def tax(salary):
@@ -29,3 +31,16 @@ def amount_saved(debt1, debt2):
     amount_saved = np.abs(debt1.total_payment - debt2.total_payment)
     return amount_saved
 
+
+def create_dataframe(debt_amount, test_start_salary, test_finish_salary, pb_rate, threshold=0):
+    """Creates and returns a pandas dataframe, that has index column, the salary, total paid
+    for that salary making the payments that you define by percentage of salary and if it has
+    a threshold or not."""
+
+    df = pd.DataFrame(columns=['Salary', 'Total paid', 'Years', 'Months'])
+    for idx, salary in enumerate(range(test_start_salary, test_finish_salary)):
+        debt = Debt(debt_amount, salary, pb_rate, 0.06, threshold=threshold)
+        debt.wipe_debt()
+        df.loc[idx] = [salary, debt.total_payment, debt.years, debt.months]
+
+    return df
